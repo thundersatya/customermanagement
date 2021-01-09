@@ -15,5 +15,13 @@ public class CustomerExceptionHanlder {
 		 return new ResponseEntity<CustomerExceptionRes>(custException, HttpStatus.EXPECTATION_FAILED);
 		
 	}
+	
+	@ExceptionHandler(CustomerNotFoundException.class)
+	public ResponseEntity<CustomerExceptionRes> handleGenericException(CustomerNotFoundException exception)
+	{
+		CustomerExceptionRes custException = new CustomerExceptionRes(exception.getErrorCode(), exception.getErrorMessage());
+		 return new ResponseEntity<CustomerExceptionRes>(custException, HttpStatus.NOT_FOUND);
+		
+	}
 
 }

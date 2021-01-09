@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rameshsatya.peerprogramming.springbboot.exception.CustomerNotFoundException;
 import com.rameshsatya.peerprogramming.springbboot.model.Customer;
 import com.rameshsatya.peerprogramming.springbboot.service.CustomerService;
 
@@ -30,7 +31,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/customers/{id}")	
-	public Customer getCustomer(@PathVariable("id") Long customerId) {
+	public Customer getCustomer(@PathVariable("id") Long customerId) throws CustomerNotFoundException {
 		return custService.getCustomerById(customerId);
 	}
 	
