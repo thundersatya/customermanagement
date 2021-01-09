@@ -32,9 +32,13 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	  @Override 
 	  public Customer getCustomerById(Long customerId) {
-	  Optional<CustomerEntity> customerBo = custRepo.findById(customerId); Customer
-	  customer = new Customer(); ModelMapper mapper = new ModelMapper();
-	  mapper.map(customerBo, customer); return customer; }
+	  Optional<CustomerEntity> customerOptional = custRepo.findById(customerId);
+	  Customer customer = new Customer();
+	  ModelMapper mapper = new ModelMapper();
+	  if(customerOptional.isPresent())
+		  mapper.map(customerOptional.get(), customer); 
+	  return customer;
+	  }
 	 
 	
 	
