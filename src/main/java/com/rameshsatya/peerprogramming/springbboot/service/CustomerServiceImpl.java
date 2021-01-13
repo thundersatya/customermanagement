@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 		modelMapper.map(customer, customerEntity);
 		
 		custRepo.save(customerEntity);
-		
+		customer.setCustomerId(customerEntity.getCustomerId());
 		return customer;
 	}
 
@@ -42,6 +42,17 @@ public class CustomerServiceImpl implements CustomerService {
 		  return customer;
 	}
 
-	
+	@Override	
+	public Customer updateCustomer(Customer customer) throws CustomerNotFoundException{
+		
+		ModelMapper modelMapper = new ModelMapper();
+		CustomerEntity customerEntity = new CustomerEntity();
+		modelMapper.map(customer, customerEntity);
+		
+		custRepo.save(customerEntity);
+		
+		return customer;
+	}
+
 
 }
