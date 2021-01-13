@@ -1,11 +1,17 @@
 package com.rameshsatya.peerprogramming.springbboot.model;
 
+
+import javax.validation.constraints.NotNull;
+
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class Customer{
 
-	private Long customerId;	
+	private Long customerId;
+	
+	@NotNull
 	private String firstName;
 	private String lastName;
 	private String dob;
